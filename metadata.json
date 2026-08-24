@@ -1,0 +1,6 @@
+{
+  "name": "NIRIKSHAK",
+  "description": "AI-Assisted Package Compliance Inspection platform for Legal Metrology (Packaged Commodities) Rules & Food Safety verification.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

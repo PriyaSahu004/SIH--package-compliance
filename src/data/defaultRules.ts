@@ -1,0 +1,153 @@
+import { ComplianceRule } from '../types/inspection';
+
+export const DEFAULT_COMPLIANCE_RULES: ComplianceRule[] = [
+  {
+    id: 'R-LM-001',
+    name: 'MRP Declaration',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'critical',
+    description: 'Mandatory declaration of Maximum Retail Price (MRP) inclusive of all taxes in Indian Rupees (₹ or Rs.).',
+    targetFieldId: 'mrp',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'MRP declaration detected in standard format with inclusive of all taxes indication.'
+  },
+  {
+    id: 'R-LM-002',
+    name: 'Net Quantity Declaration',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'critical',
+    description: 'Declaration of net weight, measure or number in standard SI units (g, kg, ml, L, N).',
+    targetFieldId: 'netQuantity',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Net quantity clearly identified in permissible metric units.'
+  },
+  {
+    id: 'R-LM-003',
+    name: 'Manufacturer / Packer Name & Address',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'critical',
+    description: 'Complete name and physical postal address of the manufacturer, packer, or importer.',
+    targetFieldId: 'manufacturer',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Registered packer/manufacturer business name and postal address identified.'
+  },
+  {
+    id: 'R-LM-004',
+    name: 'Country of Origin',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'major',
+    description: 'Clear statement indicating country of manufacture or origin (mandatory for all packaged commodities).',
+    targetFieldId: 'countryOfOrigin',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Country of origin is legibly declared.'
+  },
+  {
+    id: 'R-LM-005',
+    name: 'Date of Manufacture / Packing',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'major',
+    description: 'Month and year of manufacture or pre-packing declared in recognized format (MM/YYYY or DD/MM/YYYY).',
+    targetFieldId: 'dateOfPacking',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Month and year of packing detected in compliant format.'
+  },
+  {
+    id: 'R-LM-006',
+    name: 'Consumer Care Details',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Consumer Protection',
+    severity: 'major',
+    description: 'Name, address, telephone number, and email ID of person or office to contact in case of consumer complaints.',
+    targetFieldId: 'consumerCare',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Toll-free helpline/telephone and email ID for consumer redressal are present.'
+  },
+  {
+    id: 'R-LM-007',
+    name: 'Common / Generic Name of Commodity',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'major',
+    description: 'Generic name or common trade name of commodity printed on the principal display panel.',
+    targetFieldId: 'productName',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Common generic name prominently displayed on primary panel.'
+  },
+  {
+    id: 'R-LM-008',
+    name: 'Batch / Lot Number',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'minor',
+    description: 'Identification mark or batch/lot number facilitating traceability.',
+    targetFieldId: 'batchNumber',
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Batch/Lot identification number detected.'
+  },
+  {
+    id: 'R-LM-009',
+    name: 'Unit Sale Price',
+    standard: 'Legal Metrology (Packaged Commodities) Rules, 2011',
+    category: 'Legal Metrology',
+    severity: 'minor',
+    description: 'Unit sale price declaration (price per g/kg/ml/L/number) for packages containing more than unit quantity.',
+    targetFieldId: 'unitSalePrice',
+    isEnabled: true,
+    isConditional: true,
+    conditionDescription: 'Applicable for packages with net quantity exceeding standard baseline.',
+    defaultExplanation: 'Unit Sale Price was not automatically detected on the principal display panel. Visual verification required.'
+  },
+  {
+    id: 'R-FD-001',
+    name: 'FSSAI License Number',
+    standard: 'FSSAI Packaging Regulations',
+    category: 'Food Safety',
+    severity: 'critical',
+    description: '14-digit FSSAI registration/license number along with standard FSSAI logo for food & beverage commodities.',
+    targetFieldId: 'fssaiLicense',
+    applicableCategories: ['Packaged Food & Beverages'],
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: '14-digit FSSAI license number identified and checksum format validated.'
+  },
+  {
+    id: 'R-FD-002',
+    name: 'Best Before / Expiry Declaration',
+    standard: 'FSSAI Packaging Regulations',
+    category: 'Food Safety',
+    severity: 'major',
+    description: 'Declaration of "Best Before [Period/Date]" or "Use By / Expiry Date" for consumables.',
+    targetFieldId: 'bestBefore',
+    applicableCategories: ['Packaged Food & Beverages'],
+    isEnabled: true,
+    isConditional: false,
+    defaultExplanation: 'Shelf life / Best before duration stated clearly.'
+  },
+  {
+    id: 'R-FD-003',
+    name: 'Veg / Non-Veg Symbol',
+    standard: 'FSSAI Packaging Regulations',
+    category: 'Food Safety',
+    severity: 'major',
+    description: 'Mandatory green circle in green outlined square (Veg) or brown triangle in brown square (Non-Veg) logo.',
+    targetFieldId: 'vegNonVeg',
+    applicableCategories: ['Packaged Food & Beverages'],
+    isEnabled: true,
+    isConditional: true,
+    conditionDescription: 'Mandatory for all food & beverage commodities.',
+    defaultExplanation: 'Veg / Non-Veg graphic symbol was not definitively classified by automated OCR. Manual visual verification required.'
+  }
+];
